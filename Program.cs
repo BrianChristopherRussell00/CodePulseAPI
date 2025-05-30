@@ -24,6 +24,7 @@ namespace CodePulseAPI
 
             });
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 
 
 
