@@ -3,6 +3,7 @@ using CodePulseAPI.Data;
 using CodePulseAPI.Repositories.Implementation;
 using CodePulseAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 namespace CodePulseAPI
 {
@@ -51,6 +52,11 @@ namespace CodePulseAPI
 
             app.UseAuthorization();
 
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+            RequestPath = "/Images"    
+            });
 
             app.MapControllers();
 
